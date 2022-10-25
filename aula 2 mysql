@@ -1,0 +1,256 @@
+
+#EXIBIR AS BASES DE DDOS
+
+
+
+MOSTRAR BANCOS DE DADOS;
+
+
+
+#CRIAR UMA BASE DE DADOS
+
+
+
+criar banco de dados aula2;
+
+
+
+#TRABALHAR COM UMA BASE DE DADOS
+
+usar aula2;
+
+
+
+
+
+#APAGAR UMA BASE DE DADOS
+
+queda do banco de dados aula2;
+
+
+
+
+
+
+
+/*Fases da modelagem
+
+
+
+Fase 1 conceitual
+
+
+
+Apenas um rascuho do que iremos fazer no banco
+
+de dados. A fase conceitual pode ser feita em qualquer 
+
+editor de texto..
+
+
+
+FASE 1
+
+
+
+Aluno - TABELA
+
+NOME  CARACTER (50)
+
+SEXO  CARACTER 1
+
+IDADE NUMERICO 2  
+
+ENDERECO  NUMERICO (100)
+
+TELEFONE CARACTER (20)
+
+E-MAIL - CARACTER(30)
+
+
+
+FASE 2 - FASE LOGICA
+
+TRAZER O QUE FEZMOS NA FASE 1 ATÉ ALGUM PROGRAMA DE MODELAGEM
+
+E REALIZAR O DIAGRAMA DE ENTIDADE E RELACIONAMENTO.  (DER)
+
+FASE 3 - FASE FÍSICA
+SCRIPT DO BANCO
+
+insert into aluno values ("ana", "f", 30, "rua a", "1111-1111", "ana@gmail.com");
+insert into aluno values ("samuel", "m", 14, "rua b", "2222-3333", "samuel@gmail.com");
+insert into aluno values ("carla", "f", 35, "rua a", "3333-3333", "carla@gmaill.com");
+insert into aluno values ("pedro", "m", 30, "rua b", "4444-4444", "pedro@globo.com");
+insert into aluno values ("lucas", "m", 45, "rua a", "1111-6666", "lucs@globo.com");
+insert into aluno values ("aline", "f", 15, "rua c", "1111-7777", "aline@senac.com");
+insert into aluno values ("mariana", "f", 18, "rua a", "1111-8888", "mariana@senac.com");
+insert into aluno values ("josefa", "f", 80, "rua a", "1111-9999", "josefa@gmail.com");
+
+| Tables_in_aula2 |
++-----------------+
+| aluno           |
++-----------------+
+1 row in set (0.025 sec)
+
+MariaDB [aula2]> desc aluno;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| nome     | varchar(50)  | YES  |     | NULL    |       |
+| sexo     | char(1)      | YES  |     | NULL    |       |
+| idade    | int(11)      | YES  |     | NULL    |       |
+| endereco | varchar(100) | YES  |     | NULL    |       |
+| telefone | varchar(20)  | YES  |     | NULL    |       |
+| email    | varchar(30)  | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+6 rows in set (0.101 sec)
+
+MariaDB [aula2]>
+MariaDB [aula2]> insert into aluno values ("ana", "f", 30, "rua a", "1111-1111", "ana@gmail.com");
+Query OK, 1 row affected (0.272 sec)
+
+MariaDB [aula2]> insert into aluno values ("samuel", "m", 14, "rua b", "2222-3333", "samuel@gmail.com");
+Query OK, 1 row affected (0.041 sec)
+
+MariaDB [aula2]> insert into aluno values ("carla", "f", 35, "rua a", "3333-3333", "carla@gmaill.com");
+Query OK, 1 row affected (0.062 sec)
+
+MariaDB [aula2]> insert into aluno values ("pedro", "m", 30, "rua b", "4444-4444", "pedro@globo.com");
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [aula2]> insert into aluno values ("lucas", "m", 45, "rua a", "1111-6666", "lucs@globo.com");
+Query OK, 1 row affected (0.013 sec)
+
+MariaDB [aula2]> insert into aluno values ("aline", "f", 15, "rua c", "1111-7777", "aline@senac.com");
+Query OK, 1 row affected (0.011 sec)
+
+MariaDB [aula2]> insert into aluno values ("mariana", "f", 18, "rua a", "1111-8888", "mariana@senac.com");
+Query OK, 1 row affected (0.021 sec)
+
+MariaDB [aula2]> insert into aluno values ("josefa", "f", 80, "rua a", "1111-9999", "josefa@gmail.com");
+Query OK, 1 row affected (0.020 sec)
+
+MariaDB [aula2]>
+MariaDB [aula2]> select * from aluno;
++---------+------+-------+----------+-----------+-------------------+
+| nome    | sexo | idade | endereco | telefone  | email             |
++---------+------+-------+----------+-----------+-------------------+
+| ana     | f    |    30 | rua a    | 1111-1111 | ana@gmail.com     |
+| samuel  | m    |    14 | rua b    | 2222-3333 | samuel@gmail.com  |
+| carla   | f    |    35 | rua a    | 3333-3333 | carla@gmaill.com  |
+| pedro   | m    |    30 | rua b    | 4444-4444 | pedro@globo.com   |
+| lucas   | m    |    45 | rua a    | 1111-6666 | lucs@globo.com    |
+| aline   | f    |    15 | rua c    | 1111-7777 | aline@senac.com   |
+| mariana | f    |    18 | rua a    | 1111-8888 | mariana@senac.com |
+| josefa  | f    |    80 | rua a    | 1111-9999 | josefa@gmail.com  |
++---------+------+-------+----------+-----------+-------------------+
+8 rows in set (0.025 sec)
+
+MariaDB [aula2]> select nome, sexo from aluno;
++---------+------+
+| nome    | sexo |
++---------+------+
+| ana     | f    |
+| samuel  | m    |
+| carla   | f    |
+| pedro   | m    |
+| lucas   | m    |
+| aline   | f    |
+| mariana | f    |
+| josefa  | f    |
++---------+------+
+8 rows in set (0.000 sec)
+
+MariaDB [aula2]> select 10 + 10 as "soma";
++------+
+| soma |
++------+
+|   20 |
++------+
+1 row in set (0.019 sec)
+
+MariaDB [aula2]>
+
+select nome, email from aluno where sexo ="f";
+update aluno set sexo ="f";
+ update aluno set sexo = "m" where nome="pedro" or nome ="samuel" or nome="lucas";
+select * from aluno where endereco ="rua a";
+select * from aluno where endereco ="rua a" and sexo="m";
+create table convidado(
+nome varchar (20),
+bairro varchar (20),
+cidade varchar (20),
+estado char(2),
+parentesco varchar(15),
+presente varchar (20),
+valor decimal
+);
+
+valor decimal
+cadastre 5 registro na tabela de convidados
+liste o nome e o parentesco dos convidados
+liste todos os convidados que darão presente com o valor acima de 500
+
+MariaDB [aula2]> create database exercicio2;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [aula2]> use exercicio2;
+Database changed
+MariaDB [exercicio2]> create table convidado;
+ERROR 1113 (42000): A table must have at least 1 column
+MariaDB [exercicio2]> create table(
+    -> create table convidado(
+    -> nome varchar (50),
+    -> bairro varchar (20),
+    -> cidade varchar (20),
+    -> estado char(2),
+    -> parentesco varchar(15),
+    -> presente varchar (20)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(
+create table convidado(
+nome varchar (50),
+bairro varchar (20),
+cidade varc...' at line 1
+MariaDB [exercicio2]> create table convidado(
+    -> nome varchar (20),
+    -> bairro varchar (20),
+    -> cidade varchar (20),
+    -> estado char(2),
+    -> parentesco varchar(15),
+    -> presente varchar (20)
+    -> );
+Query OK, 0 rows affected (0.155 sec)
+
+MariaDB [exercicio2]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| aula2              |
+| exercicio2         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [exercicio2]> show tables;
++----------------------+
+| Tables_in_exercicio2 |
++----------------------+
+| convidado            |
++----------------------+
+1 row in set (0.001 sec)
+
+MariaDB [exercicio2]> drop
+
+insert into convidado values ("Elisabete", "Anchieta", "Rio de Janeiro","RJ", "Mãe", "Dinossauro", 500);
+insert into convidado values ("Noemi", "Mariopolis", "Rio de Janeiro","RJ", "Avó", "Brinquedos", 250);
+insert into convidado values ("Eros", "Ricardo de Albuquerque", "Rio de Janeiro","RJ", "Irmão", "Roupas", "100");
+insert into convidado values ("Fernanda", "Gradin", "São Gonçalo","RJ", "Prima", "Sandália", "200");
+insert into convidado values ("Junior", "Campo Grande", "Rio de Janeiro","RJ", "Primo", "Bicicleta", "600");
+
+MariaDB [exercicio2]> select * from convidado nome where valor >="500";
