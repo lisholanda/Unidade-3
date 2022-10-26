@@ -1,0 +1,184 @@
+ #criar tabela
+ create table aluno(
+ idaluno int primary key auto_increment,
+ nome varchar(30) not null,
+ idade int not null,
+ sexo enum ("m","f") not null, 
+ email varchar (30)
+ );
+ #descreve os dados de uma tabela
+ desc aluno
+ 
+ #inserir dados na tabela de aluno
+ insert into aluno values
+ (null, "joao", 43, "m","joao@gmail.com");
+  insert into aluno values
+ (null, "celia", 34, "f","celia@bol.com");
+  insert into aluno values
+ (null, "carlos", 35, "m","carlos@bolcom");
+  insert into aluno values
+ (null, "vitor", 17, "m","vitor@globo.com");
+  insert into aluno values
+ (null, "laura", 18, "f","laura@globo.com");
+  insert into aluno values
+ (null, "vitoria", 43, "f","vitoria@gmail.com");
+ 
+ #visualizar os registros da tabela
+ select *from aluno;
+ 
+ #selecionar apenas o nome e email
+ select nome, email from aluno;
+ 
+ #saber quem tem mais de 30 anos
+ select*from aluno where idade >=30;
+  
+  #selecionar os alunos com email da globo
+  select *from aluno where email ="globo"; (ERRO)
+  
+  #clausula like
+  select *from aluno where email like "%globo%";
+  
+  #buscarem todos os alunos do sexo masculino que tenham o email da globo
+  select *from aluno where sexo="m" and email like "%globo%";
+  
+  #trazer a quantidade de alunos do sexo feminino e do masculino
+  select count (*) as "quantidade" sexo from aluno group by sexo;
+  
+  ==============================================================
+ CREATE TABLE TELEFONE(
+
+    IDTELEFONE INT PRIMARY KEY AUTO_INCREMENT,
+
+    TIPO ENUM('RES','COM','CEL') NOT NULL,
+
+    NUMERO VARCHAR(10) NOT NULL,
+
+    ID_ALUNO INT,
+
+    FOREIGN KEY(ID_ALUNO) REFERENCES ALUNO(IDALUNO)
+
+);
+insert into telefone values
+
+(null,'cel','1111-2222',1);
+
+insert into telefone values
+
+(null,'res','1111-3333',1);
+
+insert into telefone values
+
+(null,'com','1111-4444',1);
+
+insert into telefone values
+
+(null,'cel','2222-2222',2);
+
+insert into telefone values
+
+(null,'res','2222-3333',2);
+
+insert into telefone values
+
+(null,'cel','1111-4444',3);
+
+insert into telefone values
+
+(null,'cel','1111-5555',4);
+
+insert into telefone values
+
+(null,'cel','1111-6666',5);
+
+insert into telefone values
+
+(null,'res','9999-4444',6);
+
+
+#nome, email e telefone dos alunos;
+select nome, email,tipo,numero from aluno inner join telefone on idaluno = id_aluno;
+
+#nome, email e telefone das mulheres
+select nome, email, numero from aluno inner join telefone on idaluno = id_aluno where sexo="f";
+
+#nome, email e telefone dos homens
+select nome, email, numero from aluno inner join telefone on idaluno = id_aluno where sexo="m";
+
+#nome e telefone celular das mulheres
+select nome, numero from aluno inner join telefone on idaluno = id_aluno where sexo="f" and tipo ="cel";
+
+
+Crie um banco de dados com o nome exercício3
+
+Dentro dele as seguintes tabelas
+
+Produto
+
+                                             Idproduto
+
+                                             Nome
+
+                                             Descrição
+
+                                             Valor
+
+Cliente
+
+                                             Idcliente
+
+                                             Nome
+
+                                             Telefone
+
+ 
+
+ 
+
+Ao criar a tabela de venda , inclua o relacionamento entre as tabelas de produto e cliente.         
+
+Venda
+
+                                             Idvenda
+
+                                             Datavenda
+
+                                             Quantidade
+
+                                             Idproduto
+
+                                             Idcliente
+                                             
+
+Cadastre 5 produtos na tabela de produto
+
+Cadastre 5 clientes na tabela de cliente
+ insert into produto values 
+( 1, "bolsa", "bolsa de couro ecologico", 120);
+ insert into produto values 
+( 2, "vestido", "vestido gode vintage", 200);
+ insert into produto values 
+( 3, "calça", "calça jeans modelo mom", 290);
+ insert into produto values 
+( 4, "blusa", "blusa sem manga na cor preta", 140);
+ insert into produto values 
+( 5, "casaco", "casaco sobre tudo preto", 350);
+
+
+===================================
+insert into cliente values
+(11, "samuel", 1111-1111);
+insert into cliente values
+(22, "eros", 2222-2222);
+insert into cliente values
+(33, "madalena", 3333-3333);
+insert into cliente values
+(44, "sansao", 4444-4444);
+insert into cliente values
+(55, "donatelo", 5555-5555);
+
+
+
+
+ 
+ 
+
