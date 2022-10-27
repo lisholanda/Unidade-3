@@ -1,0 +1,44 @@
+#aula4
+create database aula4;
+use aula4;
+
+create table aluno(
+idaluno int primary key auto_increment,
+nome varchar (30) not null,
+sexo enum ('f', 'm') not null ,
+email varchar (30) unique
+);
+
+insert into aluno values (null, 'ana', 'f', 'ana@ig.com');
+insert into aluno values (null, 'pedro', 'm', 'pedro@ig.com');
+insert into aluno values (null, 'lucas', 'm', 'lucas@gmail.com');
+insert into aluno values (null, 'vitor', 'm', 'vitor@gmail.com');
+insert into aluno values (null, 'douglas', 'm', 'douglas@globo.com');
+insert into aluno values (null, 'valeria', 'f', 'valeria@globo.com');
+insert into aluno values (null, 'ellen', 'f', 'ellen@bol.com');
+
+select *from aluno;
+
+#tabela de endereço com 1 para 1
+create table endereco (
+idendereco int primary key auto_increment,
+bairro varchar(30) not null,
+cidade enum ('sp', 'rj', 'mg') not null,
+id_aluno int unique
+);
+
+alter table endereco ADD CONSTRAINT
+fk_endereco_aluno
+foreign key (id_aluno) references aluno (idaluno)
+on delete cascade;
+
+insert into endereco values (null, 'centro', 'rj', 1);
+insert into endereco values (null, 'centro', 'sp', 2);
+insert into endereco values (null, 'centro', 'mg', 3);
+
+
+#excluir aluno:
+delete from aluno where idaluno =1;
+
+select nome, email, cidade
+from aluno inner join endereco where idaluno =id_aluno;
